@@ -170,18 +170,18 @@ async function createTables() {
             console.log('finished testing updatePost...');
 
             console.log('starting to test update post tags...');
-            console.log(posts[1]);
+            // console.log(posts[1]);
             const updatePostTagsResult = await updatePost(posts[1].id, {
                 tags: ["#youcandoanything", "#redfish", "#bluefish"]
             });
-            console.log(updatePostTagsResult);
+            // console.log(updatePostTagsResult);
             console.log('finished testing updating post tags');
 
             console.log('starting to test getPostsByTagName...');
             const postsWithHappy = await getPostsByTagName("#happy");
-            console.log(posts[1], posts[2], posts[0]);
+            // console.log(posts[1], posts[2], posts[0]);
             console.log('finished testing getPostsByTagName')
-            console.log(postsWithHappy[0], postsWithHappy[1]);
+            // console.log(postsWithHappy[0], postsWithHappy[1]);
 
             console.log("testing getUserById with 1");
             const albert = await getUserById(1);

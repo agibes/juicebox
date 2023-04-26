@@ -1,5 +1,5 @@
 const express = require('express');
-const { getAllUsers, getUserByUsername } = require('../db');
+const { getAllUsers, getUserByUsername, createUser } = require('../db');
 const usersRouter = express.Router();
 const jwt = require('jsonwebtoken');
 const {JWT_SECRET} = process.env;
@@ -60,5 +60,30 @@ usersRouter.post('/login', async (req, res, next) => {
 
 // curl http://localhost:3000/api -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhbGJlcnQiLCJwYXNzd29yZCI6ImJlcnRpZTk5IiwiaWF0IjoxNjgyNDUyMDc0fQ.iPhCdMzVOc0KrL2XUgrC3h3sIFwB70fvrzb8sIA9Sl4'
 
+
+usersRouter.post('/register', async (req, res, next) => {
+    const { username, password, name, location } = req.body;
+    try {
+        const _user = await getUserByUsername(username);
+
+        if (_user) {
+            next({
+                name: 'UserExistsError',
+                message: 'A user by that username already exists'
+            });
+        }
+
+        const user = await createUser({username, password, name, location});
+
+        const token = jwt.sign({id: user.id, username}, process.env.JWT_SECRET, {expiresIn: '1w'});
+
+        res.send({
+            message: "thank you for signing up",
+            token
+        })
+    } catch ({name, message}) {
+        next({name, message})
+    }
+});
 
 module.exports = usersRouter;
