@@ -58,7 +58,7 @@ usersRouter.post('/login', async (req, res, next) => {
     }
 });
 
-// curl http://localhost:3000/api -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhbGJlcnQiLCJwYXNzd29yZCI6ImJlcnRpZTk5IiwiaWF0IjoxNjgyNDUyMDc0fQ.iPhCdMzVOc0KrL2XUgrC3h3sIFwB70fvrzb8sIA9Sl4'
+// curl http://localhost:3000/api -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwidXNlcm5hbWUiOiJzeXp5Z3lzIiwiaWF0IjoxNjgyNTIzNDUyLCJleHAiOjE2ODMxMjgyNTJ9.Kjq-frgONs5XV5Oa12UXTTHazaB0imw0QSqZ0FvokPE'
 
 
 usersRouter.post('/register', async (req, res, next) => {

@@ -4,7 +4,7 @@ const usersRouter = require('./users');
 const postsRouter = require('./posts');
 const tagsRouter = require('./tags');
 const jwt = require('jsonwebtoken');
-const {getUserById} = require('../db');
+const {getUserById, getPostById} = require('../db');
 const {JWT_SECRET} = process.env;
 
 
